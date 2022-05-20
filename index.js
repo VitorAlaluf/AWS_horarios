@@ -38,7 +38,7 @@ exports.handler = async (event, context) => {
         body = await dynamo.scan({ TableName: "horario-atendimento-teste" }).promise();
         break;
 
-      case "post /horarios":
+      case "POST /horarios":
         let requestJSON = JSON.parse(event.body);
         await dynamo
           .post({
@@ -56,7 +56,7 @@ exports.handler = async (event, context) => {
             }
           })
           .promise();
-        body = `Put item ${requestJSON.id}`;
+        body = `Post item ${requestJSON.id}`;
         break;
 
       case "PATCH /horarios":
@@ -76,7 +76,7 @@ exports.handler = async (event, context) => {
           }
         })
         .promise();
-      body = `Put item ${requestJSON.id}`;
+      body = `Patch item ${requestJSON.id}`;
       break;
 
       default:
