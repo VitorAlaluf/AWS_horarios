@@ -1,0 +1,39 @@
+{
+    "Items": [
+        {
+            "inicio_semana": "08:00",
+            "fim_semana": "20:00",
+            "inicio_sabado": "08:00",
+            "fim_sabado": "20:00",
+            "inicio_domingo": "08:00",
+            "fim_domingo": "20:00",
+            "inicio_feriado": "08:00",
+            "fim_feriado": "20:00",
+            "id": "vendas-mg"
+        },
+        {
+            "inicio_semana": "08:00",
+            "fim_semana": "20:00",
+            "inicio_sabado": "08:00",
+            "fim_sabado": "20:00",
+            "inicio_domingo": "08:00",
+            "fim_domingo": "20:00",
+            "inicio_feriado": "08:00",
+            "fim_feriado": "20:00",
+            "id": "financeiro-mg"
+        },
+        {
+            "inicio_semana": "08:00",
+            "fim_semana": "20:00",
+            "inicio_sabado": "08:00",
+            "fim_sabado": "20:00",
+            "inicio_domingo": "08:00",
+            "fim_domingo": "20:00",
+            "inicio_feriado": "08:00",
+            "fim_feriado": "20:00",
+            "id": "vendas-dos-vales"
+        }
+    ],
+    "Count": 3,
+    "ScannedCount": 3
+}
