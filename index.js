@@ -11,10 +11,10 @@ exports.handler = async (event, context) => {
 
   try {
     switch (event.routeKey) {
-      case "DELETE /items/{id}":
+      case "DELETE /horarios/{id}":
         await dynamo
           .delete({
-            TableName: "http-crud-tutorial-items",
+            TableName: "horario-atendimento-teste",
             Key: {
               id: event.pathParameters.id
             }
@@ -22,33 +22,63 @@ exports.handler = async (event, context) => {
           .promise();
         body = `Deleted item ${event.pathParameters.id}`;
         break;
-      case "GET /items/{id}":
+
+      case "GET /horarios/{id}":
         body = await dynamo
           .get({
-            TableName: "http-crud-tutorial-items",
+            TableName: "horario-atendimento-teste",
             Key: {
               id: event.pathParameters.id
             }
           })
           .promise();
         break;
-      case "GET /items":
-        body = await dynamo.scan({ TableName: "http-crud-tutorial-items" }).promise();
+
+      case "GET /horarios":
+        body = await dynamo.scan({ TableName: "horario-atendimento-teste" }).promise();
         break;
-      case "PUT /items":
+
+      case "PUT /horarios":
         let requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
-            TableName: "http-crud-tutorial-items",
+            TableName: "horario-atendimento-teste",
             Item: {
               id: requestJSON.id,
-              price: requestJSON.price,
-              name: requestJSON.name
+              inicio_semana: requestJSON.inicio_semana,
+              fim_semana: requestJSON.fim_semana,
+              inicio_sabado: requestJSON.inicio_sabado,
+              fim_sabado: requestJSON.fim_sabado,
+              inicio_domingo: requestJSON.inicio_domingo,
+              fim_domingo: requestJSON.fim_domingo,
+              inicio_feriado: requestJSON.inicio_feriado,
+              fim_feriado: requestJSON.fim_feriado
             }
           })
           .promise();
         body = `Put item ${requestJSON.id}`;
         break;
+
+      case "PATCH /horarios":
+      await dynamo
+        .patch({
+          TableName: "horario-atendimento-teste",
+          Item: {
+            id: requestJSON.id,
+            inicio_semana: requestJSON.inicio_semana,
+            fim_semana: requestJSON.fim_semana,
+            inicio_sabado: requestJSON.inicio_sabado,
+            fim_sabado: requestJSON.fim_sabado,
+            inicio_domingo: requestJSON.inicio_domingo,
+            fim_domingo: requestJSON.fim_domingo,
+            inicio_feriado: requestJSON.inicio_feriado,
+            fim_feriado: requestJSON.fim_feriado
+          }
+        })
+        .promise();
+      body = `Put item ${requestJSON.id}`;
+      break;
+
       default:
         throw new Error(`Unsupported route: "${event.routeKey}"`);
     }
