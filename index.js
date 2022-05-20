@@ -41,7 +41,7 @@ exports.handler = async (event, context) => {
       case "POST /horarios":
         let requestJSON = JSON.parse(event.body);
         await dynamo
-          .post({
+          .put({
             TableName: "horario-atendimento-teste",
             Item: {
               id: requestJSON.id,
@@ -61,7 +61,7 @@ exports.handler = async (event, context) => {
 
       case "PATCH /horarios":
       await dynamo
-        .patch({
+        .update({
           TableName: "horario-atendimento-teste",
           Item: {
             id: requestJSON.id,
